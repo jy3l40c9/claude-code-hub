@@ -16,8 +16,11 @@ import { ProxySession } from "./proxy/session";
 
 export async function handleProxyRequest(c: Context): Promise<Response> {
   let session: ProxySession | null = null;
+  
+  
+  
   try {
-    session = await ProxySession.fromContext(c);
+    session     =    await ProxySession.fromContext(c);
     try {
       const systemSettings = await getCachedSystemSettings();
       session.setHighConcurrencyModeEnabled(systemSettings.enableHighConcurrencyMode ?? false);
